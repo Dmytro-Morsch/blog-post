@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from "react";
-import {createPost, getPosts, updatePost} from "./api.js";
+import {createPost, deletePost, getPosts, updatePost} from "./api.js";
 
 import PostList from "./PostList.jsx";
 import PostForm from "./PostForm.jsx";
@@ -12,7 +12,7 @@ function App() {
     const handleSavePost = useCallback((updatedPost) => {
         if (updatedPost.id) {
             updatePost(updatedPost)
-                .then(response => setPosts(posts.map((post) => post.id === response.id ? updatedPost : post)))
+                .then(response => setPosts(posts.map(post => post.id === response.id ? updatedPost : post)))
         } else {
             createPost(updatedPost)
                 .then(response => setPosts(prevPosts => [...prevPosts, {
@@ -29,6 +29,10 @@ function App() {
         setShowForm(true);
     }, []);
 
+    const handleDeletePost = useCallback((postId) => {
+        deletePost(postId).then(() => setPosts(posts.filter(post => post.id !== postId)));
+    }, [posts]);
+
     useEffect(() => {
         getPosts().then(setPosts);
     }, []);
@@ -37,7 +41,7 @@ function App() {
         <>
             <button type="button" onClick={() => setShowForm(prevState => !prevState)}>Створити пост</button>
 
-            <PostList posts={posts} onEditPost={handleEditPost}/>
+            <PostList posts={posts} onEditPost={handleEditPost} onDeletePost={handleDeletePost}/>
             {showForm &&
                 <PostForm post={post}
                           showForm={showForm}

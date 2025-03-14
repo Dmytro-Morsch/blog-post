@@ -54,14 +54,16 @@ button {
     .post-header {
         display: flex;
 
-        .edit-btn {
+        .edit-btn,
+        .delete-btn {
             display: none;
         }
     }
 
     &:hover {
         .post-header {
-            .edit-btn {
+            .edit-btn,
+            .delete-btn {
                 display: inline-block;
             }
         }

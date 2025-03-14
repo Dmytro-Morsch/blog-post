@@ -1,4 +1,4 @@
-function PostList({posts, onEditPost}) {
+function PostList({posts, onEditPost, onDeletePost}) {
     return (
         <>
             {posts.toSorted((a, b) => b.id - a.id)
@@ -6,7 +6,10 @@ function PostList({posts, onEditPost}) {
                     <div key={post.id} className="post">
                         <div className="post-header">
                             <h2 className="title">{post.title}</h2>
-                            <button className="edit-btn" onClick={() => onEditPost(post)}>Редагувати</button>
+                            <div className="btns">
+                                <button className="edit-btn" onClick={() => onEditPost(post)}>Редагувати</button>
+                                <button className="delete-btn" onClick={() => onDeletePost(post.id)}>Видалити</button>
+                            </div>
                         </div>
 
                         <div className="body">{post.body}</div>
