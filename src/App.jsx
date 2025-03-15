@@ -24,14 +24,22 @@ function App() {
         setShowForm(false);
     }, [posts]);
 
+    const handleCreatePost = () => {
+        setShowForm(true);
+        setPost({});
+    };
+
     const handleEditPost = useCallback((post) => {
         setPost(post);
         setShowForm(true);
     }, []);
 
     const handleDeletePost = useCallback((postId) => {
-        deletePost(postId).then(() => setPosts(posts.filter(post => post.id !== postId)));
-    }, [posts]);
+        deletePost(postId).then(() => {
+            setPosts(prevPosts => prevPosts.filter(post => post.id !== postId))
+            console.log("deleted " + postId)
+        });
+    }, []);
 
     useEffect(() => {
         getPosts().then(setPosts);
@@ -39,7 +47,7 @@ function App() {
 
     return (
         <>
-            <button type="button" onClick={() => setShowForm(prevState => !prevState)}>Створити пост</button>
+            <button className="create-btn" type="button" onClick={handleCreatePost}>Створити пост</button>
 
             <PostList posts={posts} onEditPost={handleEditPost} onDeletePost={handleDeletePost}/>
 

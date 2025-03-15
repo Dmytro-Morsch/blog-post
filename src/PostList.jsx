@@ -1,34 +1,20 @@
 import {useState} from "react";
-import {FaRegTrashAlt} from "react-icons/fa";
-import {MdModeEdit} from "react-icons/md";
+import Post from "./Post.jsx";
 
 function PostList({posts, onEditPost, onDeletePost}) {
     const [isOpenSection, setOpenSection] = useState(null);
 
-    const toggleAccordion = (index) => {
-        setOpenSection((prev) => (prev === index ? null : index));
+    const toggleAccordion = (postId) => {
+        setOpenSection((prev) => (prev === postId ? null : postId));
     };
 
     return (
         <>
             {posts.toSorted((a, b) => b.id - a.id)
-                .map((post, index) => (
-                    <div key={post.id} className="post">
-                        <button className={`accordion-btn ${isOpenSection === index ? 'active' : ''}`}
-                                onClick={() => toggleAccordion(index)}>{post.title}</button>
-
-                        <div className={`accordion-body ${isOpenSection === index ? 'open' : ''}`}>
-                            <div className="btns">
-                                <button className="edit-btn" onClick={() => onEditPost(post)}>
-                                    <MdModeEdit className="icon"/>
-                                </button>
-                                <button className="delete-btn" onClick={() => onDeletePost(post.id)}>
-                                    <FaRegTrashAlt className="icon"/>
-                                </button>
-                            </div>
-                            {post.body}
-                        </div>
-                    </div>
+                .map((post) => (
+                    <Post key={post.id} post={post} onDeletePost={() => onDeletePost(post.id)}
+                          onEditPost={() => onEditPost(post)}
+                          toggleAccordion={() => toggleAccordion(post.id)} isOpenSection={isOpenSection}/>
                 ))}
         </>
     );
