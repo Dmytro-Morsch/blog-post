@@ -17,9 +17,17 @@ function PostForm({post, showForm, onSave, onCancel}) {
     return (
         <dialog ref={dialogRef} className="post-form" onCancel={onCancel}>
             <div className="container">
-                <input value={title} onChange={e => setTitle(e.target.value)}/>
-                <textarea value={body} onChange={e => setBody(e.target.value)}></textarea>
-                <div>
+                <div className="field">
+                    <label>Заголовок:</label>
+                    <input value={title} onChange={e => setTitle(e.target.value)}/>
+                </div>
+
+                <div className="field">
+                    <label>Текст:</label>
+                    <textarea value={body} onChange={e => setBody(e.target.value)}></textarea>
+                </div>
+
+                <div className="btns">
                     <button type="button" onClick={() => onSave({id: post.id, title, body})}>Зберегти</button>
                     <button type="button" onClick={() => onCancel()}>Відхилити</button>
                 </div>

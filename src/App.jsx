@@ -42,6 +42,7 @@ function App() {
             <button type="button" onClick={() => setShowForm(prevState => !prevState)}>Створити пост</button>
 
             <PostList posts={posts} onEditPost={handleEditPost} onDeletePost={handleDeletePost}/>
+
             {showForm &&
                 <PostForm post={post}
                           showForm={showForm}
