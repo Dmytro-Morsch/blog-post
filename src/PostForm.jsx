@@ -15,7 +15,7 @@ function PostForm({post, showForm, onSave, onCancel}) {
     }, [showForm]);
 
     return (
-        <dialog ref={dialogRef} className="post-form" onCancel={onCancel}>
+        <dialog ref={dialogRef} className="post-form-dialog" onCancel={onCancel}>
             <div className="container">
                 <div className="field">
                     <label>Заголовок:</label>
@@ -28,8 +28,10 @@ function PostForm({post, showForm, onSave, onCancel}) {
                 </div>
 
                 <div className="btns">
-                    <button type="button" onClick={() => onSave({id: post.id, title, body})}>Зберегти</button>
-                    <button type="button" onClick={() => onCancel()}>Відхилити</button>
+                    <button className="save-btn" type="button"
+                            onClick={() => onSave({id: post.id, title, body})}>Зберегти
+                    </button>
+                    <button className="cancel-btn" type="button" onClick={() => onCancel()}>Відхилити</button>
                 </div>
             </div>
         </dialog>

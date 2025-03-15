@@ -47,7 +47,9 @@ function App() {
 
     return (
         <>
-            <button className="create-btn" type="button" onClick={handleCreatePost}>Створити пост</button>
+            <div className="btn-container">
+                <button className="create-btn" type="button" onClick={handleCreatePost}>Створити пост</button>
+            </div>
 
             <PostList posts={posts} onEditPost={handleEditPost} onDeletePost={handleDeletePost}/>
 

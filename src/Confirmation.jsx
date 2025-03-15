@@ -12,14 +12,14 @@ function Confirmation({onDelete, onCancel}) {
     }, []);
 
     return (
-        <dialog ref={dialogRef} onCancel={() => onCancel()}>
-            <div>Видалити пост?</div>
+        <dialog ref={dialogRef} className="confirmation-dialog" onCancel={() => onCancel()}>
+            <div className="message">Видалити пост?</div>
 
             <div className="confirmation-btns">
-                <button className="delete-btn" onClick={() => onDelete()}>
+                <button type="button" className="delete-btn" onClick={() => onDelete()}>
                     Видалити
                 </button>
-                <button className="cancel-btn" onClick={() => onCancel()}>
+                <button type="button" className="cancel-btn" onClick={() => onCancel()}>
                     Відхилити
                 </button>
             </div>

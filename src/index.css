@@ -29,7 +29,21 @@ button {
     transition: border-color 0.25s;
 }
 
-.post-form {
+.btn-container {
+    display: flex;
+    justify-content: center;
+
+    .create-btn {
+        color: #FFFFFF;
+        background-color: #00ADB5;
+
+        &:hover {
+            background-color: #00878C;
+        }
+    }
+}
+
+.post-form-dialog {
     border-radius: 10px;
     border: none;
 
@@ -69,6 +83,19 @@ button {
             justify-content: center;
             align-items: center;
             gap: 10px;
+
+            .save-btn {
+                color: #FFFFFF;
+                background-color: #00ADB5;
+
+                &:hover {
+                    background-color: #00878C;
+                }
+            }
+
+            .cancel-btn:hover {
+                background-color: #d3d3d3;
+            }
         }
     }
 }
@@ -111,6 +138,7 @@ button {
     .btns {
         display: flex;
         gap: 10px;
+        margin-bottom: 10px;
 
         .icon {
             color: white;
@@ -120,21 +148,10 @@ button {
         .edit-btn,
         .delete-btn {
             padding: 10px 15px;
-        }
-
-        .edit-btn {
             background-color: #424242FF;
 
             &:hover {
                 background-color: #6B6B6BFF;
-            }
-        }
-
-        .delete-btn {
-            background-color: #D62D30;
-
-            &:hover {
-                background-color: #FF5454FF;
             }
         }
     }
@@ -145,6 +162,40 @@ button {
 
         &.open {
             display: inline-block;
+        }
+    }
+
+    .confirmation-dialog {
+        border-radius: 10px;
+        border: none;
+
+        &::backdrop {
+            background-color: gray;
+            opacity: 0.5;
+        }
+
+        .message {
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .confirmation-btns {
+            display: flex;
+            gap: 10px;
+
+            .delete-btn {
+                color: #FFFFFF;
+                background-color: #D62D30;
+
+                &:hover {
+                    background-color: #FF5454FF;
+                }
+            }
+
+            .cancel-btn:hover {
+                background-color: #d3d3d3;
+            }
         }
     }
 }
