@@ -1,6 +1,5 @@
 import {useCallback, useEffect, useState} from "react";
 import {createPost, deletePost, getPosts, updatePost} from "./api.js";
-
 import PostList from "./PostList.jsx";
 import PostForm from "./PostForm.jsx";
 
@@ -35,10 +34,7 @@ function App() {
     }, []);
 
     const handleDeletePost = useCallback((postId) => {
-        deletePost(postId).then(() => {
-            setPosts(prevPosts => prevPosts.filter(post => post.id !== postId))
-            console.log("deleted " + postId)
-        });
+        deletePost(postId).then(() => setPosts(prevPosts => prevPosts.filter(post => post.id !== postId)));
     }, []);
 
     useEffect(() => {

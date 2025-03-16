@@ -1,7 +1,7 @@
+import {useCallback, useState} from "react";
 import {MdModeEdit} from "react-icons/md";
 import {FaRegTrashAlt} from "react-icons/fa";
 import Confirmation from "./Confirmation.jsx";
-import {useCallback, useState} from "react";
 
 function Post({post, onDeletePost, onEditPost, toggleAccordion, isOpenSection}) {
     const [showConfirmation, setShowConfirmation] = useState(false);

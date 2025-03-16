@@ -4,12 +4,8 @@ function Confirmation({onDelete, onCancel}) {
     const dialogRef = useRef(null);
 
     useEffect(() => {
-        if (dialogRef.current?.open) {
-            dialogRef.current?.close();
-        } else if (!dialogRef.current?.open) {
-            dialogRef.current?.showModal();
-        }
-    }, []);
+        dialogRef.current?.showModal();
+    }, [dialogRef]);
 
     return (
         <dialog ref={dialogRef} className="confirmation-dialog" onCancel={() => onCancel()}>
