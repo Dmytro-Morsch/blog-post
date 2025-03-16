@@ -1,24 +1,26 @@
+const BASE_URL = 'https://jsonplaceholder.typicode.com';
+
 export function getPosts() {
-    return fetch('https://jsonplaceholder.typicode.com/posts')
+    return fetch(`${BASE_URL}/posts`)
         .then(handleResponse).catch(handleError);
 }
 
 export function createPost(post) {
-    return fetch('https://jsonplaceholder.typicode.com/posts', {
+    return fetch(`${BASE_URL}/posts`, {
         method: 'POST',
         body: JSON.stringify(post)
     }).then(handleResponse).catch(handleError);
 }
 
 export function updatePost(post) {
-    return fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
+    return fetch(`${BASE_URL}/posts/${post.id}`, {
         method: 'PUT',
         body: JSON.stringify(post)
     }).then(handleResponse).catch(handleError);
 }
 
 export function deletePost(postId) {
-    return fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+    return fetch(`${BASE_URL}/posts/${postId}`, {
         method: 'DELETE'
     }).then(handleResponse).catch(handleError);
 }
