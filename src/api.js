@@ -31,5 +31,6 @@ function handleResponse(response) {
 }
 
 function handleError(error) {
+    //Consider displaying the error on UI
     return console.error('Fetch error:', error);
 }
